@@ -69,7 +69,7 @@ class About(DateMixin):
       return self.title
    
    class Meta:
-      ordering = ("created_at")
+      ordering = ("created_at",)
       verbose_name = "haqqimizda"
       verbose_name_plural = "haqqimizdakilar"
 
@@ -82,7 +82,7 @@ class Blog(DateMixin,SlugMixin):
       return self.title
    
    class Meta:
-      ordering = ("created_at")
+      ordering = ("created_at",)
       verbose_name = "blog"
       verbose_name_plural = "bloglar"
       
