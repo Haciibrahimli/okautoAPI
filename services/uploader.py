@@ -19,3 +19,9 @@ class Uploader:
     @staticmethod
     def upload_photo_blog(instance, filename):
         return f" blog/{filename}" 
+    
+    @staticmethod
+    def upload_photo_about(instance, filename):
+        return f" about/{filename}" 
+    
+    
