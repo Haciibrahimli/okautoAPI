@@ -17,18 +17,37 @@ SOCIAL_CHOICES = (
 
 
 
+class Marka(DateMixin):
+   name = models.CharField(max_length = 255, verbose_name = "marka adlari")
 
+   def __str__(self):
+        return self.name
+
+    
+   class Meta:
+     ordering = ('-created_at',)
+     verbose_name = 'marka'
+     verbose_name_plural = 'markalar'
+
+class Model(DateMixin):
+   name = models.CharField(max_length = 255, verbose_name = "model adlarii" )
+   marka = models.ForeignKey(Marka,on_delete=models.SET_NULL, null=True, blank=True)
+
+   def __str__(self):
+        return self.name
+
+    
+   class Meta:
+     ordering = ('-created_at',)
+     verbose_name = 'model'
+     verbose_name_plural = 'modeller'
 
 
 class Index(DateMixin):
-    title = models.CharField(max_length = 255,verbose_name = 'basliq')
-    text = models.TextField(verbose_name = 'metn')
     slider_image = models.ImageField(upload_to=Uploader.upload_photo_index,null=True,blank=True)
-    image = models.ImageField(upload_to=Uploader.upload_photo_index1,null=True,blank=True)
-
-
+    
     def __str__(self):
-        return self.title()
+        return f"{self.created_at}"
 
     
     class Meta:
@@ -36,11 +55,29 @@ class Index(DateMixin):
      verbose_name = 'index'
      verbose_name_plural = 'index'
 
+class Index_About(DateMixin):
+    title = models.CharField(max_length = 255,verbose_name = 'basliq')
+    text = models.TextField(verbose_name = 'metn')
+    image = models.ImageField(upload_to=Uploader.upload_photo_index1,null=True,blank=True)
+
+    def __str__(self) -> str:
+       return self.title
+
+    class Meta:
+        ordering =("created_at",)
+        verbose_name = "esas sehfe melumat"
+        verbose_name_plural = "esas sehfe melumatlar"
+
+
 class Product(DateMixin,SlugMixin):
     name = models.CharField(max_length = 255,verbose_name = 'mehsulun adi')
     code = models.CharField(max_length = 255, verbose_name = 'mehsulun kodu') 
     price = models.FloatField(verbose_name = 'mehsulun qiymeti')
     discount_price = models.FloatField(verbose_name = 'mehsulun endirimli qiymeti')
+    is_in_stock = models.BooleanField(default = True)
+    text = models.TextField(verbose_name = "product info",null = True, blank = True)
+    marka = models.ForeignKey(Marka,on_delete = models.SET_NULL,null= True, blank = True )
+    model = models.ForeignKey(Model,on_delete = models.SET_NULL,null = True, blank = True)
 
     def __str__(self):
         return self.name
@@ -61,9 +98,8 @@ class About(DateMixin):
    title = models.CharField(max_length = 255,verbose_name = "bashliq")
    text = models.TextField(verbose_name = "metn")
    image  = models.ImageField(upload_to=Uploader.upload_photo_about,null=True,blank=True)
-   questions = models.CharField(max_length = 255, verbose_name = "verilen suallar")
-   answers = models.CharField(max_length = 255, verbose_name = "cavblar")
-   info = models.TextField(verbose_name = "haqqimizda melumatlar")
+  
+   
 
    def __str__(self):
       return self.title
@@ -72,6 +108,18 @@ class About(DateMixin):
       ordering = ("created_at",)
       verbose_name = "haqqimizda"
       verbose_name_plural = "haqqimizdakilar"
+
+class Ask(DateMixin):
+    questions = models.CharField(max_length = 255, verbose_name = "verilen suallar")
+    answers = models.CharField(max_length = 255, verbose_name = "cavblar")
+
+    def __str__(self):
+       return self.answers
+    
+    class Meta:
+       ordering = ("created_at",) 
+       verbose_name = "sorgular"
+       verbose_name_plural = "sorgular"
 
 class Blog(DateMixin,SlugMixin):
    title = models.CharField(max_length = 255,verbose_name = "bashliq")

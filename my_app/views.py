@@ -1,3 +1,63 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from rest_framework.permissions import AllowAny
+from rest_framework.generics import (ListAPIView, RetrieveAPIView,
+                                     ListCreateAPIView, CreateAPIView,
+                                     UpdateAPIView,DestroyAPIView)
+from my_app.models import *
+from my_app.serializers import *
 
-# Create your views here.
+
+class IndexListAPIView(ListAPIView):
+    queryset = Index.objects.all()
+    serializer_class = IndexSerializer
+    
+    
+class ProductListAPIView(ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductCreateAPIView(CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDestroyAPIView(DestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductRetrieveAPIView(RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = 'id'
+
+class BlogListAPIView(ListAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSeializer
+
+
+class BlogRetrieveAPIView(RetrieveAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSeializer
+    lookup_field = 'id'
+
+class ContactCreateAPIView(CreateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = BlogSeializer
+
+class SosialMediaListAPIView(ListAPIView):
+    queryset = SosialMedia.objects.all()
+    serializer_class = SosialMediaserializer
+
+
+
+
+class MainDetailsListAPIView(ListAPIView):
+    queryset = MainDetails.objects.all()
+    serializer_class = MainDetailsserializer
+
+class AskListAPIView(ListAPIView):
+    queryset = Ask.objects.all()
+    serializer_class = Askserializer
+
+
+
+

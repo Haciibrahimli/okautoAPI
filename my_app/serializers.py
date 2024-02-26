@@ -21,7 +21,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class BlogSeializer(serializers.ModelSerializer):
     class Meta:
-        models = Blog
+        model = Blog
         fields = "__all__"
 
 class ContactSrializer(serializers.ModelSerializer):
@@ -29,3 +29,17 @@ class ContactSrializer(serializers.ModelSerializer):
         model = Contact
         fields = "__all__"
 
+class MainDetailsserializer(serializers.ModelSerializer):
+    class Meta:
+        model = MainDetails
+        fields = "__all__"
+
+class SosialMediaserializer(serializers.ModelSerializer):
+    class Meta:
+        model = SosialMedia
+        fields = "__all__"
+
+class Askserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ask
+        fields = "__all__" 
