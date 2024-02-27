@@ -15,6 +15,9 @@ urlpatterns = [
     path("sosial/media",SosialMediaListAPIView.as_view(), name='sosial-media'),
     path("main/detail",MainDetailsListAPIView.as_view(), name='main-detail'),
     path("ask/list", AskListAPIView.as_view(), name='ask-list'),
+    path("model/list", ModelListAPIView.as_view(), name='model-list'),
+    path("marka/list", MarkaListAPIView.as_view(), name='marka-list'),
+    path("index_about/list", Index_AboutListAPI.as_view(), name='index_about-list'),
     
 
 ]

@@ -48,8 +48,6 @@ class SosialMediaListAPIView(ListAPIView):
     serializer_class = SosialMediaserializer
 
 
-
-
 class MainDetailsListAPIView(ListAPIView):
     queryset = MainDetails.objects.all()
     serializer_class = MainDetailsserializer
@@ -57,6 +55,18 @@ class MainDetailsListAPIView(ListAPIView):
 class AskListAPIView(ListAPIView):
     queryset = Ask.objects.all()
     serializer_class = Askserializer
+
+class ModelListAPIView(ListAPIView):
+    queryset = Model.objects.all()
+    serializer_class = Modelserializer
+
+class MarkaListAPIView(ListAPIView):
+    queryset = Marka.objects.all()
+    serializer_class = Markaseializer
+
+class Index_AboutListAPI(ListAPIView):
+    queryset = Index_About.objects.all()
+    serializer_class = Index_Aboutserializer
 
 
 

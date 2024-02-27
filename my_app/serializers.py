@@ -43,3 +43,18 @@ class Askserializer(serializers.ModelSerializer):
     class Meta:
         model = Ask
         fields = "__all__" 
+
+class Modelserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Model
+        fields = "__all__"
+
+class Markaseializer(serializers.ModelSerializer):
+    class Meta:
+        model = Marka
+        fields = "__all__"
+
+class Index_Aboutserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Index_About
+        fields = "__all__"   

@@ -188,6 +188,7 @@ class MainDetails(SlugMixin, DateMixin):
          self.slug = Generator.create_slug_shortcode(size=10, model_=MainDetails)
         super(MainDetails, self).save(*args, **kwargs)
 
+
 class SosialMedia(DateMixin):
     sosial_name = models.CharField(max_length=255,verbose_name='sosial media hesabi',choices=SOCIAL_CHOICES)
     sosial_link = models.TextField(verbose_name='sosial media linki')
