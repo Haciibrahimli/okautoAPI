@@ -11,7 +11,6 @@ urlpatterns = [
     path("contact/create",ContactCreateAPIView.as_view(), name='contact-create'),
     path("blog/list",BlogListAPIView.as_view(), name='blog-list'),
     path("blog/retrieve/<id>/'",BlogRetrieveAPIView.as_view(), name='blog-retrieve'),
-    path("blogs/",BlogListAPIView.as_view(), name='blogs'),
     path("sosial/media",SosialMediaListAPIView.as_view(), name='sosial-media'),
     path("main/detail",MainDetailsListAPIView.as_view(), name='main-detail'),
     path("ask/list", AskListAPIView.as_view(), name='ask-list'),

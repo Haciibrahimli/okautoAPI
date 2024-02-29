@@ -5,7 +5,8 @@ from rest_framework.generics import (ListAPIView, RetrieveAPIView,
                                      UpdateAPIView,DestroyAPIView)
 from my_app.models import *
 from my_app.serializers import *
-
+from my_app.filter import ModelFilter,ProductFilter
+from django_filters.rest_framework.backends import DjangoFilterBackend
 
 class IndexListAPIView(ListAPIView):
     queryset = Index.objects.all()
@@ -15,6 +16,8 @@ class IndexListAPIView(ListAPIView):
 class ProductListAPIView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ProductFilter
 
 class ProductCreateAPIView(CreateAPIView):
     queryset = Product.objects.all()
@@ -59,6 +62,8 @@ class AskListAPIView(ListAPIView):
 class ModelListAPIView(ListAPIView):
     queryset = Model.objects.all()
     serializer_class = Modelserializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ModelFilter
 
 class MarkaListAPIView(ListAPIView):
     queryset = Marka.objects.all()
