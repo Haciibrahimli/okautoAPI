@@ -43,9 +43,14 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     "my_app",
     'django_filters',
+    'accounts',
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    #   account modeli yzarken isifade olunur
 ]
 
 MIDDLEWARE = [
+   ' rest_framework_simplejwt.authentication.JWTAuthentication'
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,7 +113,11 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
+       'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    )
 }
 
 # Internationalization
@@ -142,6 +151,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),}
+
+# account modeli yazarken istifade olunur
+AUTH_USER_MODEL = 'accounts.User' 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
