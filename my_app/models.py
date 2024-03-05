@@ -69,6 +69,7 @@ class Index_About(DateMixin):
         verbose_name_plural = "esas sehfe melumatlar"
 
 
+
 class Product(DateMixin,SlugMixin):
     name = models.CharField(max_length = 255,verbose_name = 'mehsulun adi')
     code = models.CharField(max_length = 255, verbose_name = 'mehsulun kodu') 
@@ -79,8 +80,10 @@ class Product(DateMixin,SlugMixin):
     marka = models.ForeignKey(Marka,on_delete = models.SET_NULL,null= True, blank = True )
     model = models.ForeignKey(Model,on_delete = models.SET_NULL,null = True, blank = True)
 
+
     def __str__(self):
         return self.name
+
 
     class Meta:
         ordering = ("-created_at", )
@@ -88,10 +91,13 @@ class Product(DateMixin,SlugMixin):
         verbose_name_plural = "mehsullar"
 
 
+
     def save(self, *args, **kwargs):
         if not self.slug:
          self.slug = Generator.create_slug_shortcode(size=10, model_=Product)
         super(Product, self).save(*args, **kwargs)
+
+
 
 
 class About(DateMixin):
@@ -109,6 +115,8 @@ class About(DateMixin):
       verbose_name = "haqqimizda"
       verbose_name_plural = "haqqimizdakilar"
 
+
+
 class Ask(DateMixin):
     questions = models.CharField(max_length = 255, verbose_name = "verilen suallar")
     answers = models.CharField(max_length = 255, verbose_name = "cavblar")
@@ -120,6 +128,8 @@ class Ask(DateMixin):
        ordering = ("created_at",) 
        verbose_name = "sorgular"
        verbose_name_plural = "sorgular"
+
+
 
 class Blog(DateMixin,SlugMixin):
    title = models.CharField(max_length = 255,verbose_name = "bashliq")
@@ -138,6 +148,7 @@ class Blog(DateMixin,SlugMixin):
         if not self.slug:
          self.slug = Generator.create_slug_shortcode(size=10, model_= Blog)
         super(Blog, self).save(*args, **kwargs)
+
 
 
 class Contact(DateMixin,SlugMixin):
@@ -164,6 +175,8 @@ class Contact(DateMixin,SlugMixin):
          self.slug = Generator.create_slug_shortcode(size=10, model_=Contact)
         super(Contact, self).save(*args, **kwargs)
 
+
+
 class MainDetails(SlugMixin, DateMixin):
     email = models.EmailField(verbose_name='Email')
     adresss = models.CharField(max_length = 255,verbose_name='adress' )
@@ -187,6 +200,7 @@ class MainDetails(SlugMixin, DateMixin):
         if not self.slug:
          self.slug = Generator.create_slug_shortcode(size=10, model_=MainDetails)
         super(MainDetails, self).save(*args, **kwargs)
+
 
 
 class SosialMedia(DateMixin):
