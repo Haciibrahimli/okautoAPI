@@ -8,7 +8,6 @@ urlpatterns = [
     path("product/create", ProductCreateAPIView.as_view(), name='product-create'),
     path("product/detail/<id>/", ProductRetrieveAPIView.as_view(), name='product-detail'),
     path("product/destry",ProductDestroyAPIView.as_view(), name='product-destroy'),
-    path("product/destry",ProductDestroyAPIView.as_view(), name='product-destroy'),
     path("contact/create",ContactCreateAPIView.as_view(), name='contact-create'),
     path("blog/list",BlogListAPIView.as_view(), name='blog-list'),
     path("blog/retrieve/<id>/'",BlogRetrieveAPIView.as_view(), name='blog-retrieve'),
@@ -17,8 +16,11 @@ urlpatterns = [
     path("ask/list", AskListAPIView.as_view(), name='ask-list'),
     path("model/list", ModelListAPIView.as_view(), name='model-list'),
     path("marka/list", MarkaListAPIView.as_view(), name='marka-list'),
-    path("index_about/list", Index_AboutListAPI.as_view(), name='index_about-list'),
-    
+    path("index_about/list", Index_AboutListAPIView.as_view(), name='index_about-list'),
+    path("basket/list", BasketListAPIView.as_view(), name='basket-list'),
+    path("basket/create", BasketCreateAPIView.as_view(), name='product-create'),
+    path("basket/detail/<id>/", BasketRetrieveAPIView.as_view(), name='product-detail'),
+    path("basket/destry",BasketDestroyAPIView.as_view(), name='product-destroy'),
     
 
 ]

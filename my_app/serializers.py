@@ -57,4 +57,9 @@ class Markaseializer(serializers.ModelSerializer):
 class Index_Aboutserializer(serializers.ModelSerializer):
     class Meta:
         model = Index_About
-        fields = "__all__"   
+        fields = "__all__"  
+
+class Basketserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Basket
+        fields = "__all__" 

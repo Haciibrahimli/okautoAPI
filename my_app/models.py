@@ -15,7 +15,7 @@ SOCIAL_CHOICES = (
     ("tiktok", "Tiktok")
 )
 
-
+User = get_user_model()
 
 class Marka(DateMixin):
    name = models.CharField(max_length = 255, verbose_name = "marka adlari")
@@ -214,3 +214,22 @@ class SosialMedia(DateMixin):
         ordering = ("sosial_name", )
         verbose_name = "sosial media hesabi"
         verbose_name_plural = "sosial media hesablari"
+
+class Basket(DateMixin,SlugMixin):
+    user  = models.ForeignKey(User, on_delete = models.SET_NULL,null = True, blank = True)
+    product = models.ForeignKey(Product, on_delete = models.SET_NULL, null = True, blank = True)
+    count = models.IntegerField()
+    total_price = models.FloatField(null = True , blank = True)
+
+    def __str__(self):
+          return self.user.first_name
+
+    class Meta:
+        ordering = ("-created_at", )
+        verbose_name = "sebet"
+        verbose_name_plural = "sebetler"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+         self.slug = Generator.create_slug_shortcode(size=10, model_=Basket)
+        super(Basket, self).save(*args, **kwargs)

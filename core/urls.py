@@ -29,6 +29,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
          path("", include("my_app.urls")),
+          path("account", include("accounts.urls")),
     path('api_schema/', get_schema_view(
         title='API Schema',
         description='Guide for the REST API'

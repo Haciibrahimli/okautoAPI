@@ -69,9 +69,26 @@ class MarkaListAPIView(ListAPIView):
     queryset = Marka.objects.all()
     serializer_class = Markaseializer
 
-class Index_AboutListAPI(ListAPIView):
+class Index_AboutListAPIView(ListAPIView):
     queryset = Index_About.objects.all()
     serializer_class = Index_Aboutserializer
+
+class BasketListAPIView(ListAPIView):
+    queryset = Basket.objects.all()
+    serializer_class = Basketserializer
+
+class BasketCreateAPIView(CreateAPIView):
+    queryset = Basket.objects.all()
+    serializer_class = Basketserializer
+
+class BasketDestroyAPIView(DestroyAPIView):
+    queryset = Basket.objects.all()
+    serializer_class = Basketserializer
+
+class BasketRetrieveAPIView(RetrieveAPIView):
+    queryset = Basket.objects.all()
+    serializer_class = Basketserializer
+    lookup_field = 'id'
 
 
 
